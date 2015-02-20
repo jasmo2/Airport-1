@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150219174357) do
+ActiveRecord::Schema.define(version: 20150220161905) do
 
   create_table "airlines", force: :cascade do |t|
     t.string   "name"
@@ -21,26 +21,26 @@ ActiveRecord::Schema.define(version: 20150219174357) do
 
   create_table "arrivals", force: :cascade do |t|
     t.datetime "date"
-    t.integer  "status"
+    t.integer  "status",     default: 0
     t.integer  "flight_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   add_index "arrivals", ["flight_id"], name: "index_arrivals_on_flight_id"
 
   create_table "departures", force: :cascade do |t|
     t.datetime "date"
-    t.integer  "status"
+    t.integer  "status",     default: 0
     t.integer  "flight_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   add_index "departures", ["flight_id"], name: "index_departures_on_flight_id"
 
   create_table "flights", force: :cascade do |t|
-    t.integer  "number"
+    t.string   "number"
     t.integer  "airline_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

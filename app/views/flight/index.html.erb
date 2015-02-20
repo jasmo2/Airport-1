@@ -1,0 +1,88 @@
+<h1>Flights Schedule</h1>
+<div class="ui grid airport two column centered">
+    <!-- <div class="one wide column"></div> -->
+     	<div class=" column ">
+		 	<div class=" black">
+		 		<table class="ui celled striped table">
+		 		  <thead>
+		 		    <tr>
+		 		    	<th colspan="4">
+		 		      		Arrivals
+		 		    	</th>
+		 		  	</tr>
+		 		  	<tr>
+	 		      		<th>Flight Number</th>
+	 		      		<th>Airline</th>
+	 		      		<th>Time</th>
+	 		      		<th>Status</th>
+		 		  	</tr>
+		 		  </thead><tbody>
+		 		    <% if !@flights.blank? %>
+		 		      <% for flight in @flights %>
+			 		      <tr>
+							<td class="collapsing">
+							  <i class="arrival_flight icon"></i> <%= flight.number %>
+							</td>
+							<td><%=flight.airline.name%></td>
+							<td><%=flight.departure.date%></td>
+							<td class="right aligned collapsing">
+								<%=flight.departure.status%>
+							</td>
+						</tr>
+	 		      	<% end %>
+		 		    <% else %>
+			 		    <tr>	
+			 		      	<td colspan="4">
+			 		      		There no flights Arriving any son
+			 		    	</td>
+			 		    </tr>
+		 		    <% end %>
+		 		    
+		 		    
+		 		  </tbody>
+		 		</table>
+		 	</div>
+    	</div>
+    	<!-- Departures -->
+    	<div class=" column ">
+		 	<div class=" black">
+		 		<table class="ui celled striped table">
+		 		  <thead>
+		 		    <tr>
+		 		    	<th colspan="4">
+		 		      		Departures
+		 		    	</th>
+		 		  	</tr>
+		 		  	<tr>
+	 		      		<th>Flight Number</th>
+	 		      		<th>Airline</th>
+	 		      		<th>Time</th>
+	 		      		<th>Status</th>
+		 		  	</tr>
+		 		  </thead><tbody>
+	       		    <% if !@flights.blank? %>
+	       		      <% for flight in @flights %>
+	       		      	<tr>
+		      				<td class="collapsing">
+		      				  <i class="plane icon"></i> <%= flight.number %>
+		      				</td>
+		      				<td><%=flight.airline.name%></td>
+		      				<td><%=flight.arrival.date%></td>
+		      				<td class="right aligned collapsing">
+								<%=flight.arrival.status%>
+		      				</td>
+	       		      	</tr>
+	       		      <% end %>
+	       		    <% else %>
+	       		    	<tr>
+		       		      	<td colspan="4">
+		       		      		There no flights TO TAKE OFF any son
+		       		    	</td>
+	       		    	</tr>
+	       		    <% end %>
+		 		  </tbody>
+		 		</table>
+		 	</div>
+    	</div>
+    	
+</div>

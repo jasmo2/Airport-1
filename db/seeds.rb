@@ -9,16 +9,21 @@ Airline.delete_all
 Flight.delete_all
 Departure.delete_all
 Arrival.delete_all
+
 for iteration in 1...8
+
 	name = Faker::Name.name
 	Airline.create!(id: iteration,:name => name)
 
 	flightNumber = Faker::Address.state_abbr + Faker::Number.number(4)
 	Flight.create!(id: iteration,number: flightNumber,airline_id: iteration)
 
-	date = Faker::Time.forward(23, :morning)
-	Departure.create!(id: iteration,date: date, flight_id: iteration)
+	prng = Random.new()
 
+	date = Faker::Time.forward(23, :morning)
+	Departure.create!(id: iteration,date: date, flight_id: iteration, :status => prng.rand(0...4))
+
+	
 	date2 = Faker::Time.forward(23, :morning)
-	Arrival.create!(id: iteration,date: date2, flight_id: iteration)
+	Arrival.create!(id: iteration,date: date2, flight_id: iteration, :status => prng.rand(0...4))
 end

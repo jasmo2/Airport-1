@@ -1,0 +1,15 @@
+// Place all the styles related to the flight controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+
+i.icon.arrival_flight:before {
+content: "\2708";
+}
+
+.mytable.ui.table th{
+	color:white;
+}
+@import "semantic-ui";
+@import "semantic-ui/collections/menu";
